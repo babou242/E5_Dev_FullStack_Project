@@ -239,13 +239,6 @@ async function deleteReview(id: number) {
     alert('Erreur lors de la suppression de l\'avis')
   }
 }
-  const date = new Date(dateString)
-  return date.toLocaleDateString('fr-FR', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-  })
-}
 
 onMounted(() => {
   fetchReviews()
