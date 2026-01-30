@@ -1,5 +1,5 @@
 // src/composables/useValidation.ts
-import { computed, reactive, type UnwrapRef } from 'vue'
+import { computed, reactive } from 'vue'
 
 // Type pour une regle de validation
 type ValidationRule = (value: any) => string | true
@@ -13,11 +13,13 @@ export function useValidation<T extends Record<string, any>>(
   initialData: T,
   rules: ValidationRules<T>
 ) {
-  // ✅ Important : on force le type du reactive pour qu'il reste indexable par keyof T
-  const formData = reactive({ ...(initialData as T) }) as UnwrapRef<T>
+  // ✅ On garde formData typé comme T (et pas UnwrapRef<T>)
+  const formData = reactive({ ...(initialData as T) }) as T
 
-  // ✅ Errors et touched initialisés (sinon Object.values(errors) est bancal)
+  // Erreurs par champ
   const errors = reactive({} as Record<keyof T, string>) as Record<keyof T, string>
+
+  // Champs touches
   const touched = reactive({} as Record<keyof T, boolean>) as Record<keyof T, boolean>
 
   // Initialiser errors/touched pour toutes les clés de initialData
@@ -26,12 +28,21 @@ export function useValidation<T extends Record<string, any>>(
     touched[key] = false
   }
 
+  // ✅ Helpers d’accès typés (contournent TS2536 avec reactive)
+  function getFieldValue<K extends keyof T>(field: K): T[K] {
+    return (formData as Record<keyof T, any>)[field] as T[K]
+  }
+
+  function setFieldValue<K extends keyof T>(field: K, value: T[K]) {
+    ;(formData as Record<keyof T, any>)[field] = value
+  }
+
   // Valider un champ specifique
   function validateField(field: keyof T): boolean {
     const fieldRules = rules[field] || []
 
     for (const rule of fieldRules) {
-      const result = rule(formData[field])
+      const result = rule(getFieldValue(field))
       if (result !== true) {
         errors[field] = result
         return false
@@ -71,7 +82,10 @@ export function useValidation<T extends Record<string, any>>(
 
   // Reinitialiser le formulaire
   function resetForm(): void {
-    Object.assign(formData, initialData)
+    // ✅ plus propre que Object.assign sur type reactive/unknown
+    for (const key of Object.keys(initialData) as (keyof T)[]) {
+      setFieldValue(key, initialData[key])
+    }
 
     for (const key of Object.keys(errors) as (keyof T)[]) {
       errors[key] = ''
