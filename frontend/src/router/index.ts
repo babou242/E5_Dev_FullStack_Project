@@ -43,6 +43,11 @@ const router = createRouter({
       name: 'book-edit',
       component: () => import('@/views/BookFormView.vue'),
       meta: { requiresAuth: true, requiresAdmin: true }
+    },
+    {
+      path: '/cv',
+      name: 'cv',
+      component: () => import('@/views/CvView.vue')
     }
   ]
 })

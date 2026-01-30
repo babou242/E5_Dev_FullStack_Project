@@ -6,6 +6,8 @@
       <nav class="links">
         <RouterLink to="/books">Catalogue</RouterLink>
 
+        <RouterLink to="/cv">CV</RouterLink>
+
         <RouterLink v-if="auth.isAdmin" to="/admin">Admin</RouterLink>
 
         <RouterLink v-if="!auth.isAuthenticated" to="/login">Login</RouterLink>
