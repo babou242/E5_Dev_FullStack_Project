@@ -116,10 +116,20 @@
               <strong>{{ review.authorName }}</strong>
               <span class="review-date">{{ formatDate(review.createdAt) }}</span>
             </div>
-            <div class="review-rating">
-              <span v-for="star in 5" :key="star" class="star" :class="{ filled: star <= review.rating }">
-                ★
-              </span>
+            <div class="review-actions">
+              <div class="review-rating">
+                <span v-for="star in 5" :key="star" class="star" :class="{ filled: star <= review.rating }">
+                  ★
+                </span>
+              </div>
+              <button 
+                v-if="auth.isAdmin" 
+                class="delete-btn" 
+                @click="deleteReview(review.id!)"
+                title="Supprimer cet avis"
+              >
+                🗑️
+              </button>
             </div>
           </div>
           <p class="review-comment">{{ review.comment }}</p>
@@ -208,6 +218,27 @@ async function submitReview() {
 
 function formatDate(dateString?: string): string {
   if (!dateString) return ''
+  const date = new Date(dateString)
+  return date.toLocaleDateString('fr-FR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  })
+}
+
+async function deleteReview(id: number) {
+  if (!confirm('Êtes-vous sûr de vouloir supprimer cet avis ?')) {
+    return
+  }
+
+  try {
+    await api.delete(`/cv-reviews/${id}`)
+    await fetchReviews()
+  } catch (error) {
+    console.error('Erreur lors de la suppression:', error)
+    alert('Erreur lors de la suppression de l\'avis')
+  }
+}
   const date = new Date(dateString)
   return date.toLocaleDateString('fr-FR', {
     day: 'numeric',
@@ -458,6 +489,12 @@ h1 {
   gap: 10px;
 }
 
+.review-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .review-author strong {
   display: block;
   font-size: 1.1rem;
@@ -529,5 +566,19 @@ h1 {
   margin: 0 0 20px 0;
   color: #666;
   font-size: 0.9rem;
+}
+
+.delete-btn {
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.delete-btn:hover {
+  background: #fecaca;
 }
 </style>
