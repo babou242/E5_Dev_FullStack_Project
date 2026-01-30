@@ -98,11 +98,14 @@ onMounted(() => {
 .page-header h1 {
   margin: 0;
   font-size: 1.8rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .subtitle {
   margin: 4px 0 0 0;
-  color: #666;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .btn {
@@ -131,11 +134,12 @@ onMounted(() => {
 }
 
 .stat-card {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   border: 1px solid #e6e6e6;
   border-radius: 12px;
   padding: 20px;
   text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .stat-value {

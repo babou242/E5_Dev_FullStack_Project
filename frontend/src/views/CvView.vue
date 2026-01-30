@@ -29,7 +29,8 @@ const cvUrl = '/CV.pdf'
 
 h1 {
   margin-bottom: 20px;
-  color: #333;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .pdf-wrapper {
@@ -38,7 +39,8 @@ h1 {
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  background: white;
 }
 
 .pdf-viewer {

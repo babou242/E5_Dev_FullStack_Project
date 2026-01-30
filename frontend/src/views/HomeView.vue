@@ -69,9 +69,11 @@ onMounted(() => {
 .hero {
   text-align: center;
   padding: 60px 20px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
   border-radius: 16px;
   margin-bottom: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .hero h1 {
@@ -116,7 +118,8 @@ onMounted(() => {
   padding: 30px 20px;
   border: 1px solid #e6e6e6;
   border-radius: 14px;
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .feature .icon {
@@ -137,6 +140,8 @@ onMounted(() => {
 
 .recent h2 {
   margin: 0 0 20px 0;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .books-grid {

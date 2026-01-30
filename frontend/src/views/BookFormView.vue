@@ -84,10 +84,11 @@ onMounted(async () => {
 
 .back-link {
   display: inline-block;
-  color: #1f6feb;
+  color: white;
   text-decoration: none;
   font-weight: 600;
   margin-bottom: 12px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .back-link:hover {
@@ -97,6 +98,8 @@ onMounted(async () => {
 .page-header h1 {
   margin: 0;
   font-size: 1.8rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .loading,
@@ -111,10 +114,12 @@ onMounted(async () => {
 }
 
 .form-container {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   border: 1px solid #e6e6e6;
   border-radius: 16px;
   padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
 }
 
 .submit-error {

@@ -37,7 +37,9 @@ function onLogout() {
 .nav {
   width: 100%;
   border-bottom: 1px solid #e6e6e6;
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 .inner {
   width: min(1000px, 92%);

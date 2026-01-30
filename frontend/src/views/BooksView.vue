@@ -99,6 +99,8 @@ onMounted(() => {
 .page-header h1 {
   margin: 0;
   font-size: 1.8rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .filters {
@@ -119,6 +121,8 @@ onMounted(() => {
   border: 1px solid #ddd;
   border-radius: 10px;
   font-size: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .search-box input:focus {
@@ -131,8 +135,9 @@ onMounted(() => {
   border: 1px solid #ddd;
   border-radius: 10px;
   font-size: 1rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .stats {
@@ -146,7 +151,8 @@ onMounted(() => {
 
 .stat {
   font-weight: 600;
-  color: #555;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .category-stats {
@@ -157,18 +163,21 @@ onMounted(() => {
 
 .stat-badge {
   font-size: 12px;
-  background: #f3f5ff;
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid #dbe2ff;
   padding: 4px 10px;
   border-radius: 999px;
   color: #444;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .loading,
 .error {
   text-align: center;
   padding: 40px;
-  color: #666;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
 }
 
 .error {

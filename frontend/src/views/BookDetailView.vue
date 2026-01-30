@@ -125,9 +125,10 @@ onMounted(() => {
 }
 
 .back-link {
-  color: #1f6feb;
+  color: white;
   text-decoration: none;
   font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .back-link:hover {
@@ -135,10 +136,12 @@ onMounted(() => {
 }
 
 .book-content {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   border: 1px solid #e6e6e6;
   border-radius: 16px;
   padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
 }
 
 .book-main {

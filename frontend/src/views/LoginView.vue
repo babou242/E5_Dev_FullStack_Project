@@ -96,11 +96,13 @@ async function handleLogin() {
 .login-card {
   width: 100%;
   max-width: 400px;
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   border: 1px solid #e6e6e6;
   border-radius: 16px;
   padding: 40px 30px;
   text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
 }
 
 .login-card h1 {

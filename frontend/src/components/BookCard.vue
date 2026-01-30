@@ -38,12 +38,14 @@ defineEmits<{
 
 <style scoped>
 .card {
+  background: white;
   border: 1px solid #e6e6e6;
   border-radius: 14px;
   padding: 14px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 .top {
   display: flex;
