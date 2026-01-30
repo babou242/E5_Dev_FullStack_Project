@@ -45,3 +45,18 @@ export interface AuthResponse {
     username: string
     role: string
 }
+
+// Types pour les avis CV
+export interface CvReview {
+    id?: number
+    authorName: string
+    email?: string
+    comment: string
+    rating: number
+    createdAt?: string
+}
+
+export interface CvReviewStats {
+    averageRating: number
+    totalReviews: number
+}

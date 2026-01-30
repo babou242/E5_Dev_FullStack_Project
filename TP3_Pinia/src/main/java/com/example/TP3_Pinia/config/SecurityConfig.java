@@ -50,6 +50,9 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/books/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/books").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/cv-reviews/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/cv-reviews").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/cv-reviews").authenticated()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
 
@@ -59,6 +62,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/api/books/**")
                         .hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/books/**")
+                        .hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/cv-reviews/**")
                         .hasRole("ADMIN")
 
                         // Tout le reste necessite une authentification
